@@ -12,8 +12,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class NewSportWindow extends JFrame{
 	
-	private JTextField sportName, fileName;
-	private JLabel sportNameLabel, fileNameLabel;
+	private JTextField sportName, fileName, positionNum;
+	private JLabel sportNameLabel, fileNameLabel, positionNumLabel;
 	
 	public NewSportWindow(){
 		JFrame newSportFrame = new JFrame("New Sport");
@@ -27,17 +27,24 @@ public class NewSportWindow extends JFrame{
 		
 		sportName = new JTextField(10);
 		fileName = new JTextField(10);
-		sportNameLabel = new JLabel("Name of Sport:");
-		fileNameLabel = new JLabel("File Name:");
+		positionNum = new JTextField(2);
+		sportNameLabel = new JLabel("Name of Sport");
+		fileNameLabel = new JLabel("File Name");
+		positionNumLabel = new JLabel ("Number of Positions per Team (this can be changed later)");
 		sportNameLabel.setForeground(Color.white);
 		fileNameLabel.setForeground(Color.white);
+		positionNumLabel.setForeground(Color.white);
 		
 		layout.setHorizontalGroup(layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addComponent(sportNameLabel)
 			    .addComponent(sportName)
 			    .addComponent(fileNameLabel)
-			    .addComponent(fileName))
+			    .addComponent(fileName)
+			    .addComponent(positionNumLabel)
+			    	.addGroup(layout.createSequentialGroup()
+			    			.addComponent(positionNum)
+			    			.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)))
 				.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)
 		);
 		layout.setVerticalGroup(layout.createSequentialGroup()
@@ -46,7 +53,10 @@ public class NewSportWindow extends JFrame{
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
-			    .addPreferredGap(ComponentPlacement.UNRELATED, 375, 375)
+			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
+			    .addComponent(positionNumLabel)
+			    .addComponent(positionNum)
+			    .addPreferredGap(ComponentPlacement.UNRELATED, 350, 350)
 		);
 		
 		newSportFrame.getContentPane().add(panel);
