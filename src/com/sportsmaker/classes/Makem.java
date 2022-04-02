@@ -20,7 +20,7 @@ public class Makem {
 		frame.getContentPane().add(panel);
 		
 		frame.pack();
-		frame.setVisible(true);  		
+		frame.setVisible(true);
+		
 	}
-
 }
