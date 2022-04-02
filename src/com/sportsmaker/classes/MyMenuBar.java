@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 
 public class MyMenuBar extends JMenuBar{
 	
-	private JMenu file, edit, position, equipment, simulate, option, help;
+	private JMenu file, edit, field, position, equipment, simulate, option, help;
 	
 	public MyMenuBar() {
 		
@@ -24,6 +24,10 @@ public class MyMenuBar extends JMenuBar{
 		//Adding Edit Menu
 		edit = new EditButton();
 		this.add(edit);
+		
+		//Adding Field Menu
+		field = new FieldButton();
+		this.add(field);
 		
 		//Adding Position Menu
 		position = new PositionsButton();

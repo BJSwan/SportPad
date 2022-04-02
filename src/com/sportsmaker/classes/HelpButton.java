@@ -12,5 +12,4 @@ public class HelpButton extends JMenu{
 		button1 = new JMenuItem("Documentation");
 		this.add(button1);
 	}
-	
 }

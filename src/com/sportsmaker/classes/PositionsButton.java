@@ -9,9 +9,13 @@ public class PositionsButton extends JMenu{
 	
 	public PositionsButton() {
 		this.setText("Positons");
-		button1 = new JMenuItem("New Positon");
+		button1 = new JMenuItem("New Position");
 		button2 = new JMenuItem("Edit Position");
+		button3 = new JMenuItem("Save Position");
+		button4 = new JMenuItem("Load Position");
 		this.add(button1);
 		this.add(button2);
+		this.add(button3);
+		this.add(button4);
 	}
 }

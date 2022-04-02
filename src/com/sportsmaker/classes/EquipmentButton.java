@@ -11,7 +11,11 @@ public class EquipmentButton extends JMenu{
 		this.setText("Equipment");
 		button1 = new JMenuItem("New Equipment");
 		button2 = new JMenuItem("Edit Equipment");
+		button3 = new JMenuItem("Save Equipment");
+		button4 = new JMenuItem("Load Equipment");
 		this.add(button1);
 		this.add(button2);
+		this.add(button3);
+		this.add(button4);
 	}
 }

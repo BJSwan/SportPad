@@ -1,5 +1,6 @@
 package com.sportsmaker.classes;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,7 +22,8 @@ public class OptionsButton extends JMenu{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			
+			//TODO: Fix this!
+			//OptionsButton.this.setBackground(Color.lightGray);
 		}
 	}
 }
