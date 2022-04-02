@@ -13,8 +13,7 @@ import javax.swing.JPanel;
 
 public class MyMenuBar extends JMenuBar{
 	
-	private JMenu file, edit, position, equipment, simulate, option;
-	private JMenuItem button1, button2, button3, button4, button5, button6;
+	private JMenu file, edit, position, equipment, simulate, option, help;
 	
 	public MyMenuBar() {
 		
@@ -23,54 +22,27 @@ public class MyMenuBar extends JMenuBar{
 		this.add(file);
 		
 		//Adding Edit Menu
-		edit = new JMenu("Edit");
-		button1 = new JMenuItem("Cut");
-		button2 = new JMenuItem("Copy");
-		button3 = new JMenuItem("Paste");
-		edit.add(button1);
-		edit.add(button2);
-		edit.add(button3);
+		edit = new EditButton();
 		this.add(edit);
 		
 		//Adding Position Menu
-		position = new JMenu("Positions");
-		button1 = new JMenuItem("New Positon");
-		button2 = new JMenuItem("Edit Position");
-		position.add(button1);
-		position.add(button2);
+		position = new PositionsButton();
 		this.add(position);
 		
 		//Adding Equipment Menu
-		equipment = new JMenu("Equipment");
-		button1 = new JMenuItem("New Equipment");
-		button2 = new JMenuItem("Edit Equipment");
-		equipment.add(button1);
-		equipment.add(button2);
+		equipment = new EquipmentButton();
 		this.add(equipment);
 		
-		//Adding Edit Menu
-		simulate = new JMenu("Simulate");
-		button1 = new JMenuItem("New League");
-		button2 = new JMenuItem("Load league");
-		button3 = new JMenuItem("Ehibition Game");
-		simulate.add(button1);
-		simulate.add(button2);
-		simulate.add(button3);
-		this.add(edit);
+		//Adding Simulation Menu
+		simulate = new SimButton();
+		this.add(simulate);
 		
 		//Adding Options Menu
-		option = new JMenu("Options");
-		button1 = new JMenuItem("Light Mode");
-		button1.addActionListener(new lightModeListener());
-		option.add(button1);
+		option = new OptionsButton();
 		this.add(option);
-	}
-	
-	private class lightModeListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			
-		}
+		
+		//Adding Help Menu
+		help = new HelpButton();
+		this.add(help);
 	}
 }
