@@ -19,19 +19,7 @@ public class MyMenuBar extends JMenuBar{
 	public MyMenuBar() {
 		
 		//Adding File Menu
-		file = new JMenu("File");
-		button1 = new JMenuItem("New File");
-		button1.addActionListener(new newListener());
-		button2 = new JMenuItem("Save");
-		button1.addActionListener(new saveListener());
-		button3 = new JMenuItem("Save As");
-		button4 = new JMenuItem("Open");
-		button6 = new JMenuItem("Exit");
-		file.add(button1);
-		file.add(button2);
-		file.add(button3);
-		file.add(button4);
-		file.add(button6);
+		file = new FileButton();
 		this.add(file);
 		
 		//Adding Edit Menu
@@ -76,29 +64,6 @@ public class MyMenuBar extends JMenuBar{
 		button1.addActionListener(new lightModeListener());
 		option.add(button1);
 		this.add(option);
-	}
-	
-	private class newListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			JFrame frame = new JFrame("New Sport");
-			frame.setPreferredSize(new Dimension(500, 500));
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
-			JPanel panel = new MyPanel();
-			frame.getContentPane().add(panel);
-			
-			frame.pack();
-			frame.setVisible(true);
-		}
-	}
-	
-	private class saveListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-		}
 	}
 	
 	private class lightModeListener implements ActionListener{
