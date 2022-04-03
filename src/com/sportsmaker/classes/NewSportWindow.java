@@ -2,11 +2,10 @@ package com.sportsmaker.classes;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +17,13 @@ import javax.swing.SpinnerNumberModel;
 public class NewSportWindow extends JFrame{
 	
 	private JTextField sportName, fileName;
-	private JLabel sportNameLabel, fileNameLabel, positionNumLabel;
+	private JLabel sportNameLabel, fileNameLabel, positionNumLabel, startingFieldLabel;
 	private JSpinner positionNum;
+	private JComboBox fieldTypeCB;
+	private JButton createButton, cancelButton;
+	
+	//Temporary. should be replaced with a list of fields saved in files. maybe
+	private String fieldTypes[] = {"Soccer", "Baseball", "Basketball", "Hockey", "Football"};
 	
 	public NewSportWindow(){
 		JFrame newSportFrame = new JFrame("New Sport");
@@ -36,10 +40,17 @@ public class NewSportWindow extends JFrame{
 		positionNum = new JSpinner(new SpinnerNumberModel(5, 1, 25, 1));
 		sportNameLabel = new JLabel("Name of Sport");
 		fileNameLabel = new JLabel("File Name");
-		positionNumLabel = new JLabel ("Number of Positions per Team (this can be changed later)");
+		positionNumLabel = new JLabel("Number of Positions per Team");
+		startingFieldLabel = new JLabel("Initial Field Layout");
 		sportNameLabel.setForeground(Color.white);
 		fileNameLabel.setForeground(Color.white);
 		positionNumLabel.setForeground(Color.white);
+		startingFieldLabel.setForeground(Color.white);
+		
+		fieldTypeCB = new JComboBox(fieldTypes);
+		
+		createButton = new JButton("Create");
+		cancelButton = new JButton("Cancel");
 		
 		layout.setHorizontalGroup(layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -50,8 +61,13 @@ public class NewSportWindow extends JFrame{
 			    .addComponent(positionNumLabel)
 		    	.addGroup(layout.createSequentialGroup()
 		    			.addComponent(positionNum)
-		    			.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)))
-				.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)
+		    			.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300))
+		    	.addComponent(startingFieldLabel)
+		    	.addComponent(fieldTypeCB))
+				.addPreferredGap(ComponentPlacement.UNRELATED, 100, 100)
+				.addComponent(createButton)
+				.addComponent(cancelButton)
+				.addPreferredGap(ComponentPlacement.UNRELATED, 100, 100)
 		);
 		layout.setVerticalGroup(layout.createSequentialGroup()
 				.addComponent(sportNameLabel)
@@ -62,7 +78,13 @@ public class NewSportWindow extends JFrame{
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
 			    .addComponent(positionNumLabel)
 			    .addComponent(positionNum)
+			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
+			    .addComponent(startingFieldLabel)
+			    .addComponent(fieldTypeCB)
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 350, 350)
+			    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+			    		.addComponent(createButton)
+			    		.addComponent(cancelButton))
 		);
 		
 		newSportFrame.getContentPane().add(panel);
