@@ -2,18 +2,24 @@ package com.sportsmaker.classes;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SpinnerNumberModel;
 
 public class NewSportWindow extends JFrame{
 	
-	private JTextField sportName, fileName, positionNum;
+	private JTextField sportName, fileName;
 	private JLabel sportNameLabel, fileNameLabel, positionNumLabel;
+	private JSpinner positionNum;
 	
 	public NewSportWindow(){
 		JFrame newSportFrame = new JFrame("New Sport");
@@ -27,7 +33,7 @@ public class NewSportWindow extends JFrame{
 		
 		sportName = new JTextField(10);
 		fileName = new JTextField(10);
-		positionNum = new JTextField(2);
+		positionNum = new JSpinner(new SpinnerNumberModel(5, 1, 25, 1));
 		sportNameLabel = new JLabel("Name of Sport");
 		fileNameLabel = new JLabel("File Name");
 		positionNumLabel = new JLabel ("Number of Positions per Team (this can be changed later)");
@@ -42,9 +48,9 @@ public class NewSportWindow extends JFrame{
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
 			    .addComponent(positionNumLabel)
-			    	.addGroup(layout.createSequentialGroup()
-			    			.addComponent(positionNum)
-			    			.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)))
+		    	.addGroup(layout.createSequentialGroup()
+		    			.addComponent(positionNum)
+		    			.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)))
 				.addPreferredGap(ComponentPlacement.UNRELATED, 300, 300)
 		);
 		layout.setVerticalGroup(layout.createSequentialGroup()
