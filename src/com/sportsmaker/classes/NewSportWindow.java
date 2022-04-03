@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,12 +19,13 @@ import javax.swing.SpinnerNumberModel;
 public class NewSportWindow extends JFrame{
 	
 	private JTextField sportName, fileName;
-	private JLabel sportNameLabel, folderChooseLabel, fileNameLabel, positionNumLabel, startingFieldLabel;
+	private JLabel sportNameLabel, folderChooseLabel, chosenFolderLabel, fileNameLabel, positionNumLabel, startingFieldLabel;
 	private JSpinner positionNum;
 	private JComboBox fieldTypeCB;
 	private JButton folderChooseButton, createButton, cancelButton;
 	private JPanel panel;
 	private JFrame newSportFrame, folderChooseFrame;
+	private String folderPath;
 	
 	//Temporary. should be replaced with a list of fields saved in files. maybe
 	private String fieldTypes[] = {"Soccer", "Baseball", "Basketball", "Hockey", "Football"};
@@ -45,11 +45,13 @@ public class NewSportWindow extends JFrame{
 		positionNum = new JSpinner(new SpinnerNumberModel(5, 1, 25, 1));
 		sportNameLabel = new JLabel("Name of Sport");
 		folderChooseLabel = new JLabel("Choose A Folder To Save Your Sport Within");
+		chosenFolderLabel = new JLabel("No Folder Chosen");
 		fileNameLabel = new JLabel("File Name");
 		positionNumLabel = new JLabel("Number of Positions per Team");
 		startingFieldLabel = new JLabel("Initial Field Layout");
 		sportNameLabel.setForeground(Color.white);
 		folderChooseLabel.setForeground(Color.white);
+		chosenFolderLabel.setForeground(Color.white);
 		fileNameLabel.setForeground(Color.white);
 		positionNumLabel.setForeground(Color.white);
 		startingFieldLabel.setForeground(Color.white);
@@ -69,6 +71,7 @@ public class NewSportWindow extends JFrame{
 			    .addComponent(sportName)
 			    .addComponent(folderChooseLabel)
 			    .addComponent(folderChooseButton)
+			    .addComponent(chosenFolderLabel)
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
 			    .addComponent(positionNumLabel)
@@ -88,6 +91,7 @@ public class NewSportWindow extends JFrame{
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
 			    .addComponent(folderChooseLabel)
 			    .addComponent(folderChooseButton)
+			    .addComponent(chosenFolderLabel)
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
@@ -129,6 +133,13 @@ public class NewSportWindow extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			folderChooseFrame = new FolderChooseFrame();
+			folderPath = ((FolderChooseFrame) folderChooseFrame).getSelectedFile().getAbsolutePath();
+			String folderPathShort = folderPath;
+			if(folderPathShort.length() > 45) {
+				String tempPath = folderPathShort.substring(0, 45) + "...";
+				folderPathShort = tempPath;
+			}
+			chosenFolderLabel.setText(folderPathShort);
 		}
 	}
 }

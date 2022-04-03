@@ -1,29 +1,27 @@
 package com.sportsmaker.classes;
 
-import java.awt.Dimension;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class FolderChooseFrame extends JFrame{
 	
 	private JFileChooser folderChoose;
-	private JPanel panel;
-	private JFrame newFolderFrame;
+	private File selectedFile;
 	
 	public FolderChooseFrame(){
-		newFolderFrame = new JFrame("Choose Folder");
-		newFolderFrame.setPreferredSize(new Dimension(550, 400));
-		panel = new MyPanel();
-		
 		folderChoose = new JFileChooser();
 		folderChoose.setCurrentDirectory(folderChoose.getFileSystemView().getDefaultDirectory());
-		panel.add(folderChoose);
+		folderChoose.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
-		newFolderFrame.getContentPane().add(panel);
-		newFolderFrame.pack();
-		newFolderFrame.setVisible(true);
+		int result = folderChoose.showOpenDialog(this);
+		if (result == JFileChooser.APPROVE_OPTION) {
+		    selectedFile = folderChoose.getSelectedFile();
+		}
+	}
+	
+	public File getSelectedFile() {
+		return selectedFile;
 	}
 }
