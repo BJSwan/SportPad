@@ -143,7 +143,8 @@ public class NewSportWindow extends JFrame{
 			}
 			else {
 				try {
-				      File newSportFile = new File(folderPath + newFileName + ".smkr");
+					  new File(folderPath + newFileName + ".smkr").mkdir();
+				      File newSportFile = new File(folderPath + newFileName + ".smkr\\" + "sportinfo.smkrinfo");
 				      if (newSportFile.createNewFile()) {
 				    	  System.out.println("File created: " + newSportFile.getName());
 				      }
@@ -155,7 +156,7 @@ public class NewSportWindow extends JFrame{
 			      e.printStackTrace();
 			    }
 				try {
-				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr");
+				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr\\" + "sportinfo.smkrinfo");
 				      myWriter.write(newSportName);
 				      myWriter.write("\n");
 				      myWriter.write(Integer.toString(newPositionNum));
