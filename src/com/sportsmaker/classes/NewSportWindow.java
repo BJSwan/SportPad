@@ -2,10 +2,13 @@ package com.sportsmaker.classes;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,18 +20,20 @@ import javax.swing.SpinnerNumberModel;
 public class NewSportWindow extends JFrame{
 	
 	private JTextField sportName, fileName;
-	private JLabel sportNameLabel, fileNameLabel, positionNumLabel, startingFieldLabel;
+	private JLabel sportNameLabel, folderChooseLabel, fileNameLabel, positionNumLabel, startingFieldLabel;
 	private JSpinner positionNum;
 	private JComboBox fieldTypeCB;
-	private JButton createButton, cancelButton;
+	private JButton folderChooseButton, createButton, cancelButton;
+	private JPanel panel;
+	private JFrame newSportFrame, folderChooseFrame;
 	
 	//Temporary. should be replaced with a list of fields saved in files. maybe
 	private String fieldTypes[] = {"Soccer", "Baseball", "Basketball", "Hockey", "Football"};
 	
 	public NewSportWindow(){
-		JFrame newSportFrame = new JFrame("New Sport");
+		newSportFrame = new JFrame("New Sport");
 		newSportFrame.setPreferredSize(new Dimension(500, 500));
-		JPanel panel = new MyPanel();
+		panel = new MyPanel();
 		
 		GroupLayout layout = new GroupLayout(panel);
 		layout.setAutoCreateGaps(true);
@@ -39,10 +44,12 @@ public class NewSportWindow extends JFrame{
 		fileName = new JTextField(10);
 		positionNum = new JSpinner(new SpinnerNumberModel(5, 1, 25, 1));
 		sportNameLabel = new JLabel("Name of Sport");
+		folderChooseLabel = new JLabel("Choose A Folder To Save Your Sport Within");
 		fileNameLabel = new JLabel("File Name");
 		positionNumLabel = new JLabel("Number of Positions per Team");
 		startingFieldLabel = new JLabel("Initial Field Layout");
 		sportNameLabel.setForeground(Color.white);
+		folderChooseLabel.setForeground(Color.white);
 		fileNameLabel.setForeground(Color.white);
 		positionNumLabel.setForeground(Color.white);
 		startingFieldLabel.setForeground(Color.white);
@@ -50,12 +57,18 @@ public class NewSportWindow extends JFrame{
 		fieldTypeCB = new JComboBox(fieldTypes);
 		
 		createButton = new JButton("Create");
+		createButton.addActionListener(new createListener());
 		cancelButton = new JButton("Cancel");
+		cancelButton.addActionListener(new cancelListener());
+		folderChooseButton = new JButton("Choose Folder");
+		folderChooseButton.addActionListener(new folderChooseListener());
 		
 		layout.setHorizontalGroup(layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addComponent(sportNameLabel)
 			    .addComponent(sportName)
+			    .addComponent(folderChooseLabel)
+			    .addComponent(folderChooseButton)
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
 			    .addComponent(positionNumLabel)
@@ -72,6 +85,9 @@ public class NewSportWindow extends JFrame{
 		layout.setVerticalGroup(layout.createSequentialGroup()
 				.addComponent(sportNameLabel)
 			    .addComponent(sportName)
+			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
+			    .addComponent(folderChooseLabel)
+			    .addComponent(folderChooseButton)
 			    .addPreferredGap(ComponentPlacement.UNRELATED, 25, 25)
 			    .addComponent(fileNameLabel)
 			    .addComponent(fileName)
@@ -90,5 +106,29 @@ public class NewSportWindow extends JFrame{
 		newSportFrame.getContentPane().add(panel);
 		newSportFrame.pack();
 		newSportFrame.setVisible(true);
+	}
+	
+	private class createListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			
+			
+		}
+	}
+	
+	private class cancelListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			newSportFrame.dispose();
+		}
+	}
+	
+	private class folderChooseListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			folderChooseFrame = new FolderChooseFrame();
+		}
 	}
 }
