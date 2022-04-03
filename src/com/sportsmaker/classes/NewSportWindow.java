@@ -124,6 +124,7 @@ public class NewSportWindow extends JFrame{
 			    		.addComponent(cancelButton))
 		);
 		
+		newSportFrame.setResizable(false);
 		newSportFrame.getContentPane().add(panel);
 		newSportFrame.pack();
 		newSportFrame.setVisible(true);
