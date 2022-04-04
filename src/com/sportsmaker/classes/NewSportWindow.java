@@ -172,7 +172,7 @@ public class NewSportWindow extends JFrame{
 			      e.printStackTrace();
 			    }
 			}
-			mFrame.setLoadedFile(folderPath + newFileName + ".smkr");
+			mFrame.loadFileToSportDisplay(folderPath + newFileName + ".smkr", newSportName);
 			newSportFrame.dispose();
 		}
 	}

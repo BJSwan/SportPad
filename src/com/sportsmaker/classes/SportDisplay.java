@@ -1,16 +1,18 @@
 package com.sportsmaker.classes;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 
 public class SportDisplay extends JPanel{
 	
-	private SpringLayout layout;
+	private GroupLayout layout;
 	private JLabel fileNameLabel;
 	Border br = BorderFactory.createLineBorder(Color.black, 3);
 	private float h, w;
@@ -21,13 +23,29 @@ public class SportDisplay extends JPanel{
 		//Rectangle r = parentFrame.getBounds();
 		//h = r.height;
 		//w = r.width;
+		layout = new GroupLayout(this);
 		this.setLayout(layout);
 		this.setBounds(300,0,685,740);
 		this.setBackground(Color.lightGray);
-		
-		fileNameLabel = new JLabel(sportFile);
+		this.setBorder(br);
+		this.setLayout(layout);
+		fileNameLabel = new JLabel("No File Loaded");
 		this.add(fileNameLabel);
 		
-		this.setBorder(br);
+		layout.setHorizontalGroup(layout.createSequentialGroup()
+				.addComponent(fileNameLabel)
+		);
+		layout.setVerticalGroup(layout.createSequentialGroup()
+				.addComponent(fileNameLabel)
+		);
+		this.revalidate();
+		this.repaint();
+	}
+	
+	public void sportLoadUp(String sportFile, String labelName){
+		fileNameLabel.setText(labelName);
+		System.out.print(sportFile);
+		this.add(fileNameLabel);
+		this.repaint();
 	}
 }

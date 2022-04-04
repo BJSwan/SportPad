@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame{
 	
 	private String loadedFile;
+	private SportDisplay sportDisplay;
 	
 	public MainFrame(){
 		JFrame frame = new JFrame("Sport Maker");
@@ -21,7 +22,7 @@ public class MainFrame extends JFrame{
 	    
 		JPanel panel = new MyPanel();
 		SelectedDetailsDisplay sdd = new SelectedDetailsDisplay(loadedFile);
-		SportDisplay sportDisplay = new SportDisplay(loadedFile);
+		sportDisplay = new SportDisplay(loadedFile);
 		JMenuBar menuBar = new MyMenuBar(this);
 		
 		ImageIcon img = new ImageIcon("res/sportsmakericon.png");
@@ -38,7 +39,8 @@ public class MainFrame extends JFrame{
 		frame.setVisible(true);
 	}
 	
-	public void setLoadedFile(String file) {
+	public void loadFileToSportDisplay(String file, String name) {
 		loadedFile = file;
+		this.sportDisplay.sportLoadUp(loadedFile, name);
 	}
 }
