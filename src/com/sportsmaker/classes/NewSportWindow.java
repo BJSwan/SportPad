@@ -32,11 +32,13 @@ public class NewSportWindow extends JFrame{
 	private JFrame newSportFrame, folderChooseFrame;
 	private String newSportName, newFileName, fieldType, folderPath;
 	private int newPositionNum;
+	private MainFrame mFrame;
 	
 	//Temporary. should be replaced with a list of fields saved in files. maybe
 	private String fieldTypes[] = {"Soccer", "Baseball", "Basketball", "Hockey", "Football"};
 	
-	public NewSportWindow(){
+	public NewSportWindow(MainFrame mainFrame){
+		mFrame = mainFrame;
 		newSportFrame = new JFrame("New Sport");
 		newSportFrame.setPreferredSize(new Dimension(500, 500));
 		panel = new MyPanel();
@@ -170,6 +172,7 @@ public class NewSportWindow extends JFrame{
 			      e.printStackTrace();
 			    }
 			}
+			mFrame.setLoadedFile(folderPath + newFileName + ".smkr");
 			newSportFrame.dispose();
 		}
 	}

@@ -7,10 +7,10 @@ public class MyMenuBar extends JMenuBar{
 	
 	private JMenu file, edit, field, position, equipment, simulate, option, help;
 	
-	public MyMenuBar() {
+	public MyMenuBar(MainFrame mainFrame) {
 		
 		//Adding File Menu
-		file = new FileButton();
+		file = new FileButton(mainFrame);
 		this.add(file);
 		
 		//Adding Edit Menu

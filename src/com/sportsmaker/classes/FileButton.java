@@ -11,8 +11,11 @@ public class FileButton extends JMenu{
 	
 	private JMenuItem button1, button2, button3, button4, button5, button6;
 	private JFrame newSportFrame;
+	private MainFrame mFrame;
 	
-	public FileButton() {
+	public FileButton(MainFrame mainFrame) {
+		mFrame = mainFrame;
+		
 		this.setText("File");
 		button1 = new JMenuItem("New File");
 		button1.addActionListener(new newListener());
@@ -32,7 +35,7 @@ public class FileButton extends JMenu{
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			newSportFrame = new NewSportWindow();
+			newSportFrame = new NewSportWindow(mFrame);
 		}
 	}
 	

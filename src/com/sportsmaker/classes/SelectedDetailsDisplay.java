@@ -12,7 +12,7 @@ public class SelectedDetailsDisplay extends JPanel{
 	private SpringLayout layout;
 	Border br = BorderFactory.createLineBorder(Color.black);
 	
-	public SelectedDetailsDisplay(File sportFile) {
+	public SelectedDetailsDisplay(String sportFile) {
 		this.setLayout(layout);
 		this.setBounds(20,20,20,20);
 		this.setBackground(Color.darkGray);
