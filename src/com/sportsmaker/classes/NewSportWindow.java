@@ -145,6 +145,7 @@ public class NewSportWindow extends JFrame{
 				JOptionPane.showMessageDialog(null, "No Folder Selected");
 			}
 			else {
+				//Creates the new .smkr folder and .smkrinfo file
 				try {
 					  new File(folderPath + newFileName + ".smkr").mkdir();
 				      File newSportFile = new File(folderPath + newFileName + ".smkr\\" + "sportinfo.smkrinfo");
@@ -158,6 +159,7 @@ public class NewSportWindow extends JFrame{
 			      System.out.println("An error occurred.");
 			      e.printStackTrace();
 			    }
+				//Writes Sport Info File
 				try {
 				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr\\" + "sportinfo.smkrinfo");
 				      myWriter.write(newSportName);
@@ -165,6 +167,29 @@ public class NewSportWindow extends JFrame{
 				      myWriter.write(Integer.toString(newPositionNum));
 				      myWriter.write("\n");
 				      myWriter.write(fieldType);
+				      myWriter.close();
+				      System.out.println("Successfully wrote to the file.");
+			    }catch (IOException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+				//Creates field folder plus .smkrfield file
+				try {
+					  new File(folderPath + newFileName + ".smkr\\Field").mkdir();
+				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr\\Field\\" + "sportinfo.smkrfield");
+				      myWriter.write("TestName");
+				      myWriter.write("\n");
+				      myWriter.write("true");
+				      myWriter.write("\n");
+				      myWriter.write("true");
+				      myWriter.write("\n");
+				      myWriter.write("false");
+				      myWriter.write("\n");
+				      myWriter.write("200");
+				      myWriter.write("\n");
+				      myWriter.write("300");
+				      myWriter.write("\n");
+				      myWriter.write("TerrainID.GrassField");
 				      myWriter.close();
 				      System.out.println("Successfully wrote to the file.");
 			    }catch (IOException e) {

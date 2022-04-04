@@ -33,7 +33,7 @@ public class SportDisplay extends JPanel{
 		
 		fileNameLabel = new JLabel("No File Loaded");
 		this.add(fileNameLabel);
-		field = new Field("", false, false, false, 0, 0, new Terrain("", false, 0, 0, 0, 0, new Color(0, 0, 0)));
+		field = new Field("", false, false, false, 0, 0, new Terrain(TerrainID.Pavement));
 		
 		layout.setHorizontalGroup(layout.createSequentialGroup()
 				.addComponent(fileNameLabel)
