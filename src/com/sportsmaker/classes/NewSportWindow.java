@@ -176,7 +176,9 @@ public class NewSportWindow extends JFrame{
 				//Creates field folder plus .smkrfield file
 				try {
 					  new File(folderPath + newFileName + ".smkr\\Field").mkdir();
-				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr\\Field\\" + "sportinfo.smkrfield");
+					  new File(folderPath + newFileName + ".smkr\\Positions").mkdir();
+					  new File(folderPath + newFileName + ".smkr\\Equipment").mkdir();
+				      FileWriter myWriter = new FileWriter(folderPath + newFileName + ".smkr\\Field\\" + "fieldinfo.smkrfield");
 				      myWriter.write("TestName");
 				      myWriter.write("\n");
 				      myWriter.write("true");
@@ -189,7 +191,7 @@ public class NewSportWindow extends JFrame{
 				      myWriter.write("\n");
 				      myWriter.write("300");
 				      myWriter.write("\n");
-				      myWriter.write("TerrainID.GrassField");
+				      myWriter.write("GrassField");
 				      myWriter.close();
 				      System.out.println("Successfully wrote to the file.");
 			    }catch (IOException e) {

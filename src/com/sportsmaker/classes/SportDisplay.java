@@ -2,6 +2,9 @@ package com.sportsmaker.classes;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -49,6 +52,55 @@ public class SportDisplay extends JPanel{
 		fileNameLabel.setText(labelName);
 		System.out.print(sportFile);
 		this.add(fileNameLabel);
+		
+	    try {
+	        File fieldFile = new File(sportFile + "\\Field\\fieldinfo.smkrfield");
+	        Scanner myReader = new Scanner(fieldFile);
+	        field.setName(myReader.nextLine());
+	        System.out.println(field.getName());
+	        String outdoorsBool = myReader.nextLine();
+	        if(outdoorsBool.equals("true")){
+	        	field.setOutdoors(true);
+	        }
+	        else if (outdoorsBool.equals("false")){
+	        	field.setOutdoors(true);
+	        }
+	        String indoorsBool = myReader.nextLine();
+	        if(indoorsBool.equals("true")){
+	        	field.setIndoors(true);
+	        }
+	        else if (indoorsBool.equals("false")){
+	        	field.setIndoors(true);
+	        }
+	        String aquaBool = myReader.nextLine();
+	        if(aquaBool.equals("true")){
+	        	field.setAquatic(true);
+	        }
+	        else if (aquaBool.equals("false")){
+	        	field.setAquatic(true);
+	        }
+	        field.setHeight(Integer.valueOf(myReader.nextLine()));
+	        field.setWidth(Integer.valueOf(myReader.nextLine()));
+	        field.setTerrain(new Terrain(TerrainID.valueOf(myReader.nextLine())));
+	        System.out.println(field.getName());
+	        System.out.println(field.isOutdoors());
+	        System.out.println(field.isIndoors());
+	        System.out.println(field.isAquatic());
+	        System.out.println(field.getHeight());
+	        System.out.println(field.getWidth());
+	        System.out.println(field.getTerrain().getName());
+	        System.out.println(field.getTerrain().isSkateable());
+	        System.out.println(field.getTerrain().getSmoothness());
+	        System.out.println(field.getTerrain().getBounce());
+	        System.out.println(field.getTerrain().getGive());
+	        System.out.println(field.getTerrain().getSlip());
+	        System.out.println(field.getTerrain().getID());
+	        myReader.close();
+		}catch (FileNotFoundException e) {
+		  System.out.println("An error occurred.");
+		  e.printStackTrace();
+		}
+		
 		this.repaint();
 	}
 	

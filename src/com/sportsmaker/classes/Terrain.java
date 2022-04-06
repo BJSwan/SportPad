@@ -7,7 +7,7 @@ public class Terrain {
 	private String name;
 	private boolean skateable;
 	//Basketball court is very smooth, football field is much less smooth
-	//Basketball court has a lot of bounce, hockey rink has little bounce
+	//Basketball court has a lot of bounce, mudfield has little bounce
 	//Football pitch has a lot of give, hockey rink has no give
 	//Hockey rink has a lot of slip, rubber floor would have no slip
 	private double smoothness, bounce, give, slip;
@@ -35,6 +35,7 @@ public class Terrain {
 			give = 5.0;
 			slip = 4.0;
 			surfaceColor = new Color(0, 142, 0);
+			ID = id;
 		}
 		else if(id == TerrainID.MudField) {
 			name = "Mud Field";
@@ -44,6 +45,7 @@ public class Terrain {
 			give = 10.0;
 			slip = 9.0;
 			surfaceColor = new Color(94, 64, 7);
+			ID = id;
 		}
 		else if(id == TerrainID.Pavement) {
 			name = "Pavement";
@@ -53,10 +55,72 @@ public class Terrain {
 			give = 0.1;
 			slip = 0.5;
 			surfaceColor = new Color(100, 100, 100);
+			ID = id;
 		}
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isSkateable() {
+		return skateable;
+	}
+
+	public void setSkateable(boolean skateable) {
+		this.skateable = skateable;
+	}
+
+	public double getSmoothness() {
+		return smoothness;
+	}
+
+	public void setSmoothness(double smoothness) {
+		this.smoothness = smoothness;
+	}
+
+	public double getBounce() {
+		return bounce;
+	}
+
+	public void setBounce(double bounce) {
+		this.bounce = bounce;
+	}
+
+	public double getGive() {
+		return give;
+	}
+
+	public void setGive(double give) {
+		this.give = give;
+	}
+
+	public double getSlip() {
+		return slip;
+	}
+
+	public void setSlip(double slip) {
+		this.slip = slip;
+	}
+
+	public TerrainID getID() {
+		return ID;
+	}
+
+	public void setID(TerrainID iD) {
+		ID = iD;
+	}
+
 	public Color getSurfaceColor() {
 		return surfaceColor;
 	}
+	
+	public void setSurfaceColor(Color surfaceColor) {
+		this.surfaceColor = surfaceColor;
+	}
+	
 }

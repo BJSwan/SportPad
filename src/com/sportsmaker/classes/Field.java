@@ -25,4 +25,61 @@ public class Field {
 		g.setColor(terrain.getSurfaceColor());
 		g.fillRect(250, 200, height, width);
 	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public boolean isOutdoors() {
+		return outdoors;
+	}
+
+	public void setOutdoors(boolean outdoors) {
+		this.outdoors = outdoors;
+	}
+
+	public boolean isIndoors() {
+		return indoors;
+	}
+
+	public void setIndoors(boolean indoors) {
+		this.indoors = indoors;
+	}
+
+	public boolean isAquatic() {
+		return aquatic;
+	}
+
+	public void setAquatic(boolean aquatic) {
+		this.aquatic = aquatic;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public Terrain getTerrain() {
+		return terrain;
+	}
+
+	public void setTerrain(Terrain terrain) {
+		this.terrain = terrain;
+	}
+	
 }
